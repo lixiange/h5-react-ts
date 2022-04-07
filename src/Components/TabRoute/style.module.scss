@@ -1,0 +1,106 @@
+@import "@/static/style/theme.scss";
+@import "@/static/style/mixin.scss";
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  .content {
+    height: 100%;
+    padding-bottom: calc(60px + env(safe-area-inset-bottom));
+  }
+  .tab-bar {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding-bottom: env(safe-area-inset-bottom);
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    user-select: none;
+    .key_button {
+      width: 267px;
+      height: 48px;
+      @include display_center();
+      margin-left: 14px;
+      background: #d2d2d2;
+      border-radius: 5px;
+      font-size: 18px;
+      color: #fff;
+      letter-spacing: 0.18px;
+      font-weight: 700;
+      flex-shrink: 0;
+      & > img {
+        width: 15px;
+        height: 16px;
+        object-fit: contain;
+      }
+      & > span {
+        margin-left: 9px;
+      }
+    }
+    .key_button:active {
+      filter: contrast(50%);
+      -webkit-filter: contrast(50%);
+    }
+    .noLock_button {
+      background: linear-gradient(268deg, #feca56 15.81%, #fe9a33 98.62%);
+    }
+    .tab-item {
+      display: block;
+      position: relative;
+      width: 50%;
+      height: 60px;
+      // margin-left: 22px;
+      flex-shrink: 0;
+      .item {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding: 10px 0;
+        box-sizing: border-box;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .item > img {
+        width: 27px;
+        height: 21px;
+        display: block;
+        pointer-events: none;
+      }
+      .item > span {
+        font-size: 10px;
+        color: #999999;
+      }
+    }
+    .tab-item:nth-child(2) > img {
+      width: 30px;
+    }
+    .tab-item.active {
+      position: relative;
+      .item > span {
+        color: #e98300;
+      }
+    }
+    .tab-item:first-child.active {
+      .cover {
+        width: 107%;
+        left: -22px;
+      }
+    }
+    .tab-item:nth-child(2).active {
+      .cover {
+        width: 100%;
+      }
+    }
+    .tab-item:last-child.active {
+      .cover {
+        width: 107%;
+        right: -22px;
+      }
+    }
+  }
+}

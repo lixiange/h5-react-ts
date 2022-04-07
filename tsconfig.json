@@ -1,6 +1,11 @@
 {
+  "extends": "./paths.json",
+  // "types":[
+  //   "react-router-cache-route"
+  // ],
   "compilerOptions": {
     "target": "es5",
+    "experimentalDecorators": true,
     "lib": [
       "dom",
       "dom.iterable",
@@ -20,6 +25,7 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  
   "include": [
     "src"
   ]

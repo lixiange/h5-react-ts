@@ -1,0 +1,73 @@
+@mixin display_center($align: center, $justify: center, $direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+  }
+  @mixin textOverflow($line: 2) {
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+  }
+  
+  @mixin absolute($left: 0, $top: 0) {
+    position: absolute;
+    left: $left;
+    top: $top;
+  }
+  @mixin imgCut {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top left;
+  }
+  
+  @mixin absoluteCenter {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+  }
+  
+  @svg horizontal-1px-border {
+    height: 1px;
+  
+    @rect {
+      fill: var(--color, #d8d8d8);
+      width: 100%;
+      height: 60%;
+    }
+  }
+  
+  @svg vertical-1px-border {
+    width: 1px;
+  
+    @rect {
+      fill: var(--color, #d8d8d8);
+      width: 60%;
+      height: 100%;
+    }
+  }
+  
+  @mixin horizontal-1pxborder($color) {
+    height: 1px;
+    background: white svg(horizontal-1px-border param(--color $color));
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+  }
+  
+  @mixin vertical-1px-border($color) {
+    width: 1px;
+    background: white svg(vertical-1px-border param(--color $color));
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+  }
+  //封装的mix，需要使用时在页面中引用后用@include使用
+  
