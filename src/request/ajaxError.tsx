@@ -1,46 +1,37 @@
 import { Toast } from "antd-mobile";
 import $request from "./api";
+import { CustomSuccessData } from 'axios'
+import { PromiseReturnType } from '@/types/types'
+
 
 /**
- * 处理调用者传过来的自定义回调函数
- * @param {number} curCode 当前的code码
- * @param {object} extraCallback 包含code ，callback 属性
- */
-// const commonAction = (curCode:number, extraCallback:object) => {
-//     if (extraCallback) {
-//         //callback——调用者传过来的自定义回调
-//         //code——调用者传过来的code码，当curCode===code 时执行callback
-//         //若没有code吗，表示所有网络异常类型都执行callback
-//         const { code, callback = () => { } } = extraCallback;
-//         if (code !== 0 && (!code || code === curCode)) {
-//             callback();
-//         }
-//     }
-// };
-
-/**
- * 根据code吗返回对应的处理函数
+ * 根据code码返回对应的处理函数
  * @param {number} curCode
  * @returns {function} 返回对应的异常处理函数
  */
-const getErrorEvents = (curCode:number) => {
-    return (message:string, { callback = () => { } }) => {
-        callback();
-        console.log('到这了')
+const getErrorEvents = (curCode: number) => {
+    return (message: string) => {
         Toast.show({ content: message, duration: 1500 });
     };
 };
 
-export default async function dealError(method:(data:object)=>{}, params:object, extraCallback = {}) {
+/**
+ * 
+ * @param method 需要请求的api
+ * @param params 请求参数
+ * @returns 返回的参数值
+ */
+type Parameters<T extends (...args: any) => any> = T extends ({ ...args }: infer P) => any ? P : never
+export default async function dealError<T extends (...args: any) => any>(method: T, params: Parameters<T>) {
     try {
-        const res = await method(params);
-
-        return { error: null, res };
-    } catch (error:any) {
+        const res: Exclude<PromiseReturnType<typeof method>, null> = await method(params);
+        return { error: null, res: res };
+        // throw new Error('method类型不正确')
+    } catch (error: any) {
         $request.pageLog({
             behaviorDesc: error.message || error.msg || error,
             logType: 2,
-            userId: localStorage.getItem("newOpenId"),
+            // userId: localStorage.getItem("newOpenId"),
             behaviorType: 1,
             behavior: JSON.stringify({
                 params,
@@ -51,7 +42,7 @@ export default async function dealError(method:(data:object)=>{}, params:object,
         });
 
         const errorEvent = getErrorEvents(error.code);
-        errorEvent(error.message, extraCallback);
+        errorEvent(error.message);
         return { error, res: null };
     }
 }

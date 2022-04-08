@@ -13,7 +13,7 @@ function App() {
       <AppRoute path={'/home'} tabRoute>
         <Home />
       </AppRoute>
-      <AppRoute path={'/login'}>
+      <AppRoute path={'/login'} tabRoute>
         <Login />
       </AppRoute>
     </AppWrapper>

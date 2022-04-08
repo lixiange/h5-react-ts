@@ -5,18 +5,25 @@ import classNames from 'classnames/bind';
 import type { MouseEvent, FC } from 'react'
 import { useHistory } from 'react-router-dom'
 
+
 import { StoreState } from '@store'
 import Header from './components/Header'
-import {Arrow} from '@/Components/UI'
+import { Arrow } from '@/Components/UI'
+import { $request, ajaxError } from '@request'
 import { changeNumberStatus } from '@/store/actions'
 import { MapStateToProps, MapDispatchToProps } from '@/types/types'
 
 
 import styles from './style.module.scss';
+import dealError from '@/request/ajaxError';
 let cx = classNames.bind(styles)
 
 
 type Iprops = MapStateToProps<typeof mapStateToProps> & MapDispatchToProps<typeof mapDispatchToProps>;
+type test = (a: number, b: string) => any;
+type name<T> = { [P in keyof T]: string
+}
+
 
 function Index(props: Iprops): React.ReactElement {
 
@@ -28,21 +35,23 @@ function Index(props: Iprops): React.ReactElement {
     useEffect(() => {
         console.log(domRef.current);
         console.log(domRef.current!.classList);
-        let test = { name: "linda" }
-        console.log(cloneDeep(test))
         // inputRef.current!.focus()
     }, [props]);
 
     useEffect(() => {
+        async function getData() {
+            let { error, res } = await dealError($request.pageLog, {
+                behavior: '11',
+                behaviorDesc: '11',
+                logType: 1,
+                behaviorType: 1,
+            })
 
-        try {
-            let a: string = 'test';
-            console.log(a as string)
+            if (error) return;
+            console.log(res)
+            console.log(res!.data.age)
 
-        } catch (error: any) {
-            console.log((error).message)
         }
-
     }, []);
 
     const onChange = useCallback(
@@ -71,7 +80,7 @@ function Index(props: Iprops): React.ReactElement {
             <div>{props.data.number}</div>
             <ul>
                 <li onClick={event => selectItem(event, 1)}>1</li>
-                <Arrow direction='right'/>
+                <Arrow direction='right' />
             </ul>
         </div>
     );

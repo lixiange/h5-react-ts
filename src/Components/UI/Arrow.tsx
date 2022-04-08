@@ -1,8 +1,12 @@
 import React from "react";
 
 interface Iprops {
-    color?: string |'#000',
+    color?: string,
     direction: 'left' | 'top' | 'right' | 'bottom'
+}
+
+Arrow.defaultProps = {
+    color:'#000'
 }
 
 function Arrow(props: Iprops) {

@@ -9,6 +9,7 @@ interface Iprops {
     children: ReactElement
 }
 
+
 export default function Button(props: Iprops) {
     const [isPress, setPressState] = useState(false);
     const { style, onClick = () => { } } = props;

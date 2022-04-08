@@ -1,3 +1,6 @@
+@import "../../static/style/theme.scss";
+@import "@/static/style/mixin.scss";
+
 // Button组件样式
 .ubutton {
     position: relative;
@@ -54,3 +57,28 @@
     }
   }
   
+  //arrow组件样式
+  .arrow {
+    width: 9px;
+    height: 9px;
+    border-top-width: 2px;
+    border-top-style: solid;
+    border-right-width: 2px;
+    border-right-style: solid;
+    position: relative;
+    left: 0;
+    top: -1px;
+    display: block;
+  }
+  .arrowright {
+    transform: rotate(45deg);
+  }
+  .arrowleft {
+    transform: rotate(-90deg);
+  }
+  .arrowtop {
+    transform: rotate(-45deg);
+  }
+  .arrowbottom {
+    transform: rotate(135deg);
+  }

@@ -39,19 +39,19 @@ function TabRoute(props: Props) {
           </div>
         </Link>
         <Link
-          to="/solution"
+          to="/login"
           replace={false}
           className={cx({
             "tab-item": true,
-            active: path === "/solution",
+            active: path === "/login",
           })}
         >
           <div className={cx("item")}>
             <img
-              src={path === "/solution" ? solution_select : solution}
+              src={path === "/login" ? solution_select : solution}
               alt="解决方案"
             />
-            <span>解决方案</span>
+            <span>登录</span>
           </div>
         </Link>
       </div>

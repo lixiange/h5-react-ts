@@ -1,17 +1,13 @@
 import axios from 'axios'
 import requestConfig from "../config/REQUEST_CONFIG";
-import type { AxiosRequestConfig, AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse, CustomSuccessData } from 'axios';
 
 
 const baseURL = requestConfig.apiBase; //生产环境
-const baseURL1 = requestConfig.apiBase1; //验证码
-const testURL = requestConfig.apiTestBase; //测试环境
 axios.defaults.timeout = requestConfig.timeout;
 
 axios.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    //请求头带上token
-    // config.headers[""] = localStorage.getItem("");
     return config;
   },
   error => {
@@ -39,8 +35,24 @@ axios.interceptors.response.use(
     }
   }
 );
+interface IAxiosPost {
+  <T>(url: string, params: object, body?: boolean, hasHeader?: boolean): Promise<CustomSuccessData<T>>
+}
 
-const post = (url: string, params: object, body?: boolean, hasHeader?: boolean) => {
+interface IAxiosGet {
+  <T>(url: string, params: object): Promise<CustomSuccessData<T>>
+}
+
+/**
+ * 
+ * @param url 请求url
+ * @param params  请求参数
+ * @param body 是否以json形式请求（false为以表单形式请求）
+ * @param hasHeader 是否携带指定请求头
+ * @returns promise对象
+ */
+
+const post: IAxiosPost = (url, params, body, hasHeader) => {
   return new Promise((resolve, reject) => {
     let d = function () {
       if (body) {
@@ -52,19 +64,14 @@ const post = (url: string, params: object, body?: boolean, hasHeader?: boolean) 
     let header = function () {
       if (hasHeader) {
         return {
-          headers: { "X-Intcolon-Key": "GohdSA*5ghAacDgnZ#gcKAC5jGCtKyrk" },
+          // headers: { "X-Intcolon-Key": "GohdSA*5ghAacDgnZ#gcKAC5jGCtKyrk" },
         };
       } else {
         return {};
       }
     };
-    console.log(window.location.hostname);
     axios({
-      baseURL: hasHeader
-        ? baseURL1
-        : process.env.NODE_ENV === "development"
-          ? testURL
-          : baseURL,
+      baseURL: baseURL,
       url: url,
       method: "post",
       ...header(),
@@ -78,11 +85,12 @@ const post = (url: string, params: object, body?: boolean, hasHeader?: boolean) 
       });
   });
 };
-const get = (url: string, params: object) => {
+
+const get: IAxiosGet = (url, params) => {
   return new Promise((resolve, reject) => {
     console.log(process.env.NODE_ENV);
     axios({
-      baseURL: process.env.NODE_ENV === "development" ? testURL : baseURL,
+      baseURL: baseURL,
       url: url,
       method: "get",
       params: params,

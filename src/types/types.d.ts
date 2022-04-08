@@ -1,4 +1,4 @@
-import { AxiosPromise } from 'axios'
+
 
 declare global {
     interface Window {
@@ -14,11 +14,21 @@ declare global {
     }
 }
 
+declare module 'axios' {
+    export interface CustomSuccessData<T>{
+        code: number;
+        msg?: string;
+        message?: string;
+        data: T;
+        [keys: string]: any;
+    }
+}
+
 
 type MapStateToProps<T> = Readonly<ReturnType<T>>
 
 type MapDispatchToProps<T> = Readonly<ReturnType<T>>;
 
-type AxiosReturnType<T> = T extends (...args: any[]) => AxiosPromise<infer R> ? R : any
+type PromiseReturnType<T> = T extends (...args: any[]) => Promise<infer R> ? R : any
 
-export { MapStateToProps, MapDispatchToProps,AxiosReturnType }
+export { MapStateToProps, MapDispatchToProps,PromiseReturnType }

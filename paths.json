@@ -58,6 +58,12 @@
             ],
             "@/config/*": [
                 "src/config/*"
+            ],
+            "@request": [
+                "src/request"
+            ],
+            "@/request/*": [
+                "src/request/*"
             ]
         }
     }
