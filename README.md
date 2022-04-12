@@ -45,6 +45,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 types目录
 
-api.d.ts    api文件中的接口类型
-types.d.ts  全局文件和通用文件接口类型
+api.d.ts    api文件中的接口类型<br/>
+types.d.ts  全局文件和通用文件接口类型<br/>
 action.ts   redux中action文件中函数接口类型和联合类型
