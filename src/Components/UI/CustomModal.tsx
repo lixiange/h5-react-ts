@@ -1,13 +1,12 @@
 import React, { Component, useState, useEffect } from "react";
-import type{ReactElement} from 'react'
+import type { FC } from 'react'
 import './style.scss'
 
-interface Iprops{
+interface Iprops {
     closeModal: () => {},
-    children:ReactElement
 }
 
-export default function Index(props:Iprops) {
+const CustomModal: FC<Iprops> = (props) => {
     const [scrollY, setScrollY] = useState(0)
     useEffect(() => {
         const scroll = window.scrollY;
@@ -29,3 +28,4 @@ export default function Index(props:Iprops) {
         {props.children}
     </div>;
 }
+export default CustomModal

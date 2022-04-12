@@ -1,1 +1,1 @@
-export const GET_UESR_INFO = 'getUserInfo' as string;
+export const GET_UESR_INFO = 'GET_UESR_INFO';

@@ -12,6 +12,7 @@ declare global {
 
         }
     }
+    type func = (...args: any) => any;
 }
 
 declare module 'axios' {

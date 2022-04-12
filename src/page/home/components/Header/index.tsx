@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { RouteComponentProps, RouteChildrenProps, withRouter } from 'react-router-dom'
+import { RouteComponentProps, withRouter } from 'react-router-dom'
 
 interface Iprops extends RouteComponentProps {
     title: string
@@ -32,6 +32,7 @@ const Index: React.FC<Iprops> = (props) => {
         <div>
             头部组件
             {props.title}
+            {props.children}
         </div>
     );
 }

@@ -22,7 +22,7 @@ const getErrorEvents = (curCode: number) => {
  * @returns 返回的参数值
  */
 
-export default async function dealError<T extends (...args: any) => any>(method: T, params: ParametersObj<T>) {
+export default async function dealError<T extends func>(method: T, params: ParametersObj<T>) {
     try {
         const res: Exclude<PromiseReturnType<typeof method>, null> = await method(params);
         return { error: null, res: res };

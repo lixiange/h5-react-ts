@@ -36,8 +36,12 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
+    "build-ana": "react-app-rewired build analysis",
+    "build:test": "set CUSTOM_ENV=test&& npm run build",
+    "eject": "react-app-rewired eject",
     "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject"
+    "upload": "node ./server/upload.js",
+    "upload:test": "node ./server/uploadTest.js",
   },
   "eslintConfig": {
     "extends": [

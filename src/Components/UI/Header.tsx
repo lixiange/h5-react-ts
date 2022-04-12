@@ -1,4 +1,4 @@
-import type { ReactElement,FC } from 'react'
+import type { FC } from 'react'
 import React from "react";
 import { useHistory } from "react-router-dom";
 import logo from "@/static/images/logo.png";
@@ -7,11 +7,10 @@ import search from "@/static/images/icon/search.png";
 import "./style.scss";
 
 interface Iprops {
-    type: 'noTab' | undefined;
-    children: ReactElement[]
+    type?: 'noTab';
 }
 
-export default function Header(props: Iprops):ReactElement {
+const Header: FC<Iprops> = (props) => {
     const history = useHistory();
     return (
         <div className={`headerWrapper ${props.type === 'noTab' ? "bodyWrapper" : ""}`}>
@@ -36,3 +35,5 @@ export default function Header(props: Iprops):ReactElement {
 Header.defaultProps = {
     type: undefined
 }
+
+export default Header

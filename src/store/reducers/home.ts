@@ -1,4 +1,6 @@
 import { CHANGE_NUMBER_STATUS, INT_APP } from '../constants'
+import { EnthusiamAction } from '@types'
+
 // import {clo} from 'lodash-es'
 
 
@@ -11,11 +13,6 @@ export interface HomeListProps {
     finishInit: boolean
 }
 
-interface ActionTypes {
-    type: 'string',
-    data: any
-}
-
 const initState: HomeListProps = {
     data: {
         number: 0
@@ -23,10 +20,10 @@ const initState: HomeListProps = {
     finishInit: false
 }
 
-export default function reducer(state = initState, action: ActionTypes) {
+export default function reducer(state = initState, action: EnthusiamAction) {
     switch (action.type) {
         case CHANGE_NUMBER_STATUS:
-            state.data.number = action.data
+            state.data.number = action.data;
             return { ...state, data: { ...state.data } };
         case INT_APP:
             state.finishInit = true
