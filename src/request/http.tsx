@@ -1,7 +1,7 @@
 import axios from 'axios'
 import requestConfig from "../config/REQUEST_CONFIG";
+import {IAxiosPost,IAxiosGet} from '@types'
 import type { AxiosRequestConfig, AxiosResponse, CustomSuccessData } from 'axios';
-
 
 const baseURL = requestConfig.apiBase; //生产环境
 axios.defaults.timeout = requestConfig.timeout;
@@ -35,13 +35,8 @@ axios.interceptors.response.use(
     }
   }
 );
-interface IAxiosPost {
-  <T>(url: string, params: object, body?: boolean, hasHeader?: boolean): Promise<CustomSuccessData<T>>
-}
 
-interface IAxiosGet {
-  <T>(url: string, params: object): Promise<CustomSuccessData<T>>
-}
+
 
 /**
  * 
@@ -88,7 +83,6 @@ const post: IAxiosPost = (url, params, body, hasHeader) => {
 
 const get: IAxiosGet = (url, params) => {
   return new Promise((resolve, reject) => {
-    console.log(process.env.NODE_ENV);
     axios({
       baseURL: baseURL,
       url: url,

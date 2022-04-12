@@ -15,7 +15,7 @@ declare global {
 }
 
 declare module 'axios' {
-    export interface CustomSuccessData<T>{
+    export interface CustomSuccessData<T> {
         code: number;
         msg?: string;
         message?: string;
@@ -31,4 +31,8 @@ type MapDispatchToProps<T> = Readonly<ReturnType<T>>;
 
 type PromiseReturnType<T> = T extends (...args: any[]) => Promise<infer R> ? R : any
 
-export { MapStateToProps, MapDispatchToProps,PromiseReturnType }
+type ParametersObj<T extends (...args: any) => any> = T extends ({ ...args }: infer P) => any ? P : never;//获取函数参数对象类型{name:string}
+
+
+
+export { MapStateToProps, MapDispatchToProps, PromiseReturnType, ParametersObj }

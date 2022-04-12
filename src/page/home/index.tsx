@@ -7,11 +7,12 @@ import { useHistory } from 'react-router-dom'
 
 
 import { StoreState } from '@store'
-import Header from './components/Header'
+// import Header from './components/Header'
+import { Header } from '@/Components/UI'
 import { Arrow } from '@/Components/UI'
-import { $request, ajaxError } from '@request'
+import $request from '@/request/api'
 import { changeNumberStatus } from '@/store/actions'
-import { MapStateToProps, MapDispatchToProps } from '@/types/types'
+import { MapStateToProps, MapDispatchToProps } from '@types'
 
 
 import styles from './style.module.scss';
@@ -48,7 +49,6 @@ function Index(props: Iprops): React.ReactElement {
             })
 
             if (error) return;
-            console.log(res)
             console.log(res!.data.age)
 
         }
@@ -70,18 +70,20 @@ function Index(props: Iprops): React.ReactElement {
 
     return (
         <div className={cx('home')}>
-            <Header title={'头部組件'} />
-            home页
-            <div ref={domRef} className='test' onClick={() => { history.push('/login') }}>
-                跳转到login页
-            </div>
-            <input type="text" onChange={onChange} />
-            <button onClick={() => { props.changeNumberStatus(3) }}>点击改变number值</button>
-            <div>{props.data.number}</div>
-            <ul>
-                <li onClick={event => selectItem(event, 1)}>1</li>
-                <Arrow direction='right' />
-            </ul>
+            <Header >
+                <div ref={domRef} className='test' onClick={() => { history.push('/login') }}>
+                    跳转到login页
+                </div>
+                <input type="text" onChange={onChange} />
+                <button onClick={() => { props.changeNumberStatus(3) }}>点击改变number值</button>
+                <div>{props.data.number}</div>
+                <ul>
+                    <li onClick={event => selectItem(event, 1)}>1</li>
+                    <Arrow direction='right' />
+                </ul>
+
+            </Header>
+
         </div>
     );
 }

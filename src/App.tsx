@@ -1,9 +1,8 @@
 import React from 'react';
-import { HashRouter as Router, Route } from 'react-router-dom';
 
-import { AppWrapper, AppRoute } from '@/Components/BasePage'
 import Home from './page/home'
 import Login from './page/login'
+import { AppWrapper, AppRoute } from '@/Components/BasePage'
 
 import './App.css';
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { range } from "lodash-es";
 import classNames from "classnames/bind";
-import type { ReactElement } from 'react'
+import type { ReactElement } from 'react';
 
 import styles from "./skeleton.module.scss";
 let cx = classNames.bind(styles);

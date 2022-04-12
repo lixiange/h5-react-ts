@@ -8,7 +8,6 @@ const shareConfig = (opt = { query: '' }) => {
   }
   const { origin, pathname, search } = window.location;
   let href = origin + pathname + search;
-  console.log(config);
   request
     .wechatJssdk({
       href,

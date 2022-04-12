@@ -10,8 +10,10 @@ interface Iprops {
   path: string,
   exact?: boolean,
   tabRoute?: boolean,
+  hasLogin:boolean,
   children: ReactElement
 }
+
 interface Layoutprops {
   tabRoute?: boolean,
   children: ReactElement

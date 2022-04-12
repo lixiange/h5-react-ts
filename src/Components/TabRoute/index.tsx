@@ -4,11 +4,11 @@ import classNames from "classnames/bind";
 import { connect } from "react-redux";
 
 import { StoreState } from '@store'
-
 import home from "../../static/images/tab-icon/home.png";
-import home_select from "../../static/images/tab-icon/home_select.png";
 import solution from "../../static/images/tab-icon/solution.png";
+import home_select from "../../static/images/tab-icon/home_select.png";
 import solution_select from "../../static/images/tab-icon/solution_select.png";
+
 import styles from "./style.module.scss";
 let cx = classNames.bind(styles);
 

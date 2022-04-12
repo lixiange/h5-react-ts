@@ -41,17 +41,17 @@
             "@/pages/*": [
                 "src/pages/*"
             ],
-            "@Hooks": [
-                "src/Hooks"
+            "@hooks": [
+                "src/hooks"
             ],
-            "@/Hooks/*": [
-                "src/Hooks/*"
+            "@/hooks/*": [
+                "src/hooks/*"
             ],
-            "@Hocs": [
-                "src/Hocs"
+            "@hocs": [
+                "src/hocs"
             ],
             "@/Hocs/*": [
-                "src/Hocs/*"
+                "src/hocs/*"
             ],
             "@config": [
                 "src/config"

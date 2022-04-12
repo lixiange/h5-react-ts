@@ -7,7 +7,7 @@ import { StoreState } from '@store'
 import RouterWrapper from "./RouterWrapper";
 import { GetQueryString } from "@/utils/util";
 import * as actionCreators from "@/store/actions";
-import { MapStateToProps, MapDispatchToProps } from '@/types/types'
+import { MapStateToProps, MapDispatchToProps } from '@types'
 import ErrorBoundary from "../ErrorBoundaries";
 
 type Iprops = {

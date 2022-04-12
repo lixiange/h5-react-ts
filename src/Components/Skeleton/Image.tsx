@@ -1,6 +1,7 @@
 import type { ReactElement } from 'react'
-import React, { useState, useEffect } from "react";
 import classNames from "classnames/bind";
+import React, { useState, useEffect } from "react";
+
 import styles from "./skeleton.module.scss";
 let cx = classNames.bind(styles);
 

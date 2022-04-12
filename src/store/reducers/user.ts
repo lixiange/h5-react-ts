@@ -1,7 +1,7 @@
 import { GET_UESR_INFO } from '../constants'
 
 export interface UserStateProps {
-    hasLogin:Boolean
+    hasLogin:boolean
 }
 export const defaultState: UserStateProps = {
         hasLogin:true

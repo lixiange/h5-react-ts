@@ -1,7 +1,7 @@
-import { Toast } from "antd-mobile";
+import { Toast } from "antd-mobile/es";
+
 import $request from "./api";
-import { CustomSuccessData } from 'axios'
-import { PromiseReturnType } from '@/types/types'
+import { PromiseReturnType, ParametersObj } from '@types'
 
 
 /**
@@ -21,8 +21,8 @@ const getErrorEvents = (curCode: number) => {
  * @param params 请求参数
  * @returns 返回的参数值
  */
-type Parameters<T extends (...args: any) => any> = T extends ({ ...args }: infer P) => any ? P : never
-export default async function dealError<T extends (...args: any) => any>(method: T, params: Parameters<T>) {
+
+export default async function dealError<T extends (...args: any) => any>(method: T, params: ParametersObj<T>) {
     try {
         const res: Exclude<PromiseReturnType<typeof method>, null> = await method(params);
         return { error: null, res: res };
