@@ -41,7 +41,7 @@
     "eject": "react-app-rewired eject",
     "test": "react-app-rewired test",
     "upload": "node ./server/upload.js",
-    "upload:test": "node ./server/uploadTest.js",
+    "upload:test": "node ./server/uploadTest.js"
   },
   "eslintConfig": {
     "extends": [
